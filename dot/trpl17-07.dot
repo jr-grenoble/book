@@ -1,0 +1,35 @@
+digraph {
+   rankdir = LR;
+   overlap = false;
+   dpi = 300.0;
+   splines = false;
+   cluster = true;
+   newrank = true;
+   outputorder = in;
+   
+   node [shape = "plaintext";];
+   
+   subgraph Pin {
+      label = Pin;
+
+      box [label = <<table border="0" cellborder="1" cellspacing="0">
+         <tr><td sides="B">Box</td></tr>
+         <tr><td port="source"> </td></tr>
+         </table>>;];
+   }
+   
+   subgraph cluster_deref {
+      style = dashed;
+      label = "Pinned value";
+      fut1 [label = <<table border="0" cellborder="1" cellspacing="0">
+         <tr><td sides="B">fut</td></tr>
+         <tr><td port="target">0</td></tr>
+         <tr><td>1</td></tr>
+         <tr><td> </td></tr>
+         </table>>;];
+   }
+
+   
+   edge [tailclip = false;];
+   box:source:c -> fut1:target;
+}
